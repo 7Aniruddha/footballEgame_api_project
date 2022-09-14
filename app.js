@@ -45,7 +45,6 @@ async function getData(){
 	try {
 		var all_players=[]
 		for(let x=0; x<10; x++){
-			// const urls = await fetch(football_transfer_url, requestOptions);
 			const urls = await fetch(football_transfer_url, url_requestOptions(x));
 			const urls_json = await urls.json();
 			for(let item of urls_json.records){
