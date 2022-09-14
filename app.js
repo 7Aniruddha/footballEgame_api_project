@@ -2,11 +2,15 @@
 
 const express = require('express')
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+var hbs = require('hbs')
 
 const app = express()
 const port = 3000
+app.set('view engine', 'hbs')
+
 
 const football_transfer_url = 'https://www.footballtransfers.com/en/transfers/actions/latest-transfers/overview';
+
 
 var requestOptions = {
 	"headers": {
@@ -26,20 +30,43 @@ var requestOptions = {
 	},
   	"body": "orderBy=date_transfer&orderByDescending=1&page=1&pages=0&pageItems=25&countryId=all&tournamentId=all&clubFromId=all&clubToId=all&transferFeeFrom=&transferFeeTo=",
   	"method": "POST"
-  };
+};
 
-app.get('/', (req, res) => {
-	async function getHtml(){
-		try {
-			const urls = await fetch(football_transfer_url, requestOptions);
-			const urls_json = await urls.json();
-			res.send(urls_json.records);
-		} catch (e) {
-			console.log('err', e);
-		}
+
+var demo = {
+    name : 'Rohan',
+    age : 26
+}
+
+
+const path = require('path')
+app.use('/football', express.static(path.join(__dirname, 'public')))
+
+
+async function getData(){
+	try {
+		const urls = await fetch(football_transfer_url, requestOptions);
+		const urls_json = await urls.json();
+		return urls_json.records;
+	} catch (e) {
+		console.log('err', e.message);
+		return { msg : e.message };
+
 	}
-	getHtml();	
+}
+
+
+app.get('/hbs', async(req, res)=>{
+	const api_data = await getData()
+    res.render('demo', {demo : api_data})
 })
+
+
+app.get('/', async(req, res) => {
+	const api_data = await getData()
+	res.send(api_data);
+})
+
 
 app.listen(port, () => {
   console.log(`app listening on port ${port}`)
