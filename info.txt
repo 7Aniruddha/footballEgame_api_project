@@ -1,0 +1,19 @@
+
+#footballtransfers API
+https://www.footballtransfers.com/en/transfers/actions/latest-transfers/overview
+
+
+
+#Get each player data from "soraredata.com"
+https://www.soraredata.com/apiv2/players/info/42243852243981559568658281061101490434661865674262322520905569936008292478181
+
+
+
+#Get all playersId from "soraredata.com"
+https://www.soraredata.com/apiv2/games/nextTeamMap
+https://www.soraredata.com/apiv2/stats/homeDashboard
+https://www.soraredata.com/apiv2/games/teamMap/307
+
+
+https://www.soraredata.com/apiv2/search/autocomplete?query=Benjamin%20Sesko
+https://www.soraredata.com/apiv2/players/search/Benjamin%20Sesko
