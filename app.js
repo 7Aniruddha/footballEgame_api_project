@@ -12,7 +12,6 @@ app.set('view engine', 'hbs')
 
 
 const football_transfer_url = 'https://www.footballtransfers.com/en/transfers/actions/latest-transfers/overview';
-// const football_transfer_url = 'https://www.soraredata.com/apiv2/players/search/Oliveira';
 
 
 function url_requestOptions(page){ 
@@ -59,17 +58,6 @@ async function getData(){
 		return { msg : e.message };
 	}
 }
-
-// async function getData(){
-// 	try {
-// 		const urls = await fetch(football_transfer_url);
-// 		const urls_json = await urls.json();
-// 		return urls;
-// 	} catch (e) {
-// 		console.log('err', e.message);
-// 		return { msg : e.message };
-// 	}
-// }
 
 
 app.get('/hbs', async(req, res)=>{

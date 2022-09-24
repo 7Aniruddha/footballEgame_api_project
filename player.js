@@ -28,30 +28,36 @@ async function start() {
 } 
 start() 
 
-async function getData(){
-	try {
-		const urls = await fetch(player_data_url, requestOptions);
-		// console.log('urls_json>>',urls)
+// async function getData(){
+// 	try {
+// 		const urls = await fetch(player_data_url);
+// 		// console.log('urls_json>>',urls)
+// 		const urls_json = await urls.json();
+// 		console.log('urls_json>>',urls_json)
 
-		const urls_json = await urls.json();
-		
-		return urls;
-	} catch (e) {
-		console.log('err', e.message);
-		return { msg : e.message };
-	}
-}
+// 		return urls;
+// 	} catch (e) {
+// 		console.log('err', e.message);
+// 		return { msg : e.message };
+// 	}
+// }
 
-
-
-app.get('/', async(req, res) => {
-	const api_data = await getData()
-	res.send(api_data);
-})
+// fetch(player_data_url)
+//   .then(res => res.json())
+//   .then(json => console.log(json))
+//   .catch(err => console.error('error:' + err));
 
 
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`)
-})
+
+
+// app.get('/', async(req, res) => {
+// 	const api_data = await getData()
+// 	res.send(api_data);
+// })
+
+
+// app.listen(port, () => {
+//   console.log(`app listening on port ${port}`)
+// })
 
 
